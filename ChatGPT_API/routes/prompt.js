@@ -7,10 +7,9 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const express = require('express');
-const app = express();
-app.use(express.json());
+const router =  express.Router();
 
-app.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
     console.log(req.body["prompt"])
     if (!configuration.apiKey) {
         res.status(500).json({
@@ -38,7 +37,7 @@ app.post('/', async (req, res) => {
             temperature: 0.3,
             max_tokens: 1000
         });
-        console.log(completion.data)
+        console.log(completion.data);
         res.status(200).json({ result: completion.data.choices[0].text });
     } catch(error) {
         // Consider adjusting the error handling logic for your use case
@@ -56,8 +55,6 @@ app.post('/', async (req, res) => {
     }
 });
 
+module.exports = router;
 
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
+//curl -X POST -H "Content-Type: application/json" -d '{"prompt":"write an essay on rap beefs"}' http://localhost:3000/

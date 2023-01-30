@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/67597d0e-9c8f-4078-a17a-0621b06b50a6/AppServices/subscriptions/67597d0e-9c8f-4078-a17a-0621b06b50a6/resourceGroups/ChatGPT_API/providers/Microsoft.Web/sites/ChatGPT-API-WebApp",
+    "appService.deploySubpath": "ChatGPT_API"
+}
